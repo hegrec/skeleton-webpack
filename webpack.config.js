@@ -6,6 +6,9 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'assets')
   },
+  resolve: {
+    modules: [path.resolve(__dirname, "app"), "node_modules"]
+  },
   module: {
     rules: [
       {
@@ -14,14 +17,17 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: [
-            [ 'es2015', { modules: false} ]
-          ]
+            [ 'es2015', { modules: false} ],
+            ['stage-0'],
+          ],
+          plugins: ['transform-react-jsx']
         }
       }
     ]
   },
   devServer: {
     publicPath: '/assets/',
-    compress: true
+    compress: true,
+    historyApiFallback: true
   }
 };
