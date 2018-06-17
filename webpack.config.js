@@ -9,6 +9,7 @@ module.exports = {
   resolve: {
     modules: [path.resolve(__dirname, "app"), "node_modules"]
   },
+  mode: "development",
   module: {
     rules: [
       {
